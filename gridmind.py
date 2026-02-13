@@ -1,15 +1,15 @@
 import re
 
-question = input("Ask Yourself!")
+question = input("Ask Yourself!") # Input == sentences
 i = 0
 X = []
 print(question)
 
-splited = re.split(r"\W+", question)
+splited = re.split(r"\W+", question) # split sentences by space (\s)
 print(splited)
-const_spl = splited.copy()
+const_spl = splited.copy() # memo(splited sentences)
 
-while i < len(splited):
+while i < len(splited): # make a rotation between Parent node and children node
     Y = []
     parent = splited[i]
     print(f"부모 = {parent}")
@@ -19,15 +19,16 @@ while i < len(splited):
     for j in splited:
         notes = input("take your mind!")
         print(f"notes = {notes}")
-        Z = re.split(r"\W+", notes)
+        Z = re.split(r"\W+", notes) # for infinite expansions
         Y.append([j, Z])
         print(f"기록 a = {Y}")
     X.append(Y)
     splited = const_spl.copy()
     i += 1
 
-print(f"최종 : {X}")
+print(f"최종 : {X}") # final mapping
 
+""" filesave as csv and dot, for using data analyze tools. """
 while True:
     save = input("Could you want to save it as file?(y/n)")
 
@@ -39,7 +40,7 @@ while True:
 if save == 'y' or save == 'Y':
     print("1) .csv\n2) .dot\n3) both of them.")
     data = int(input("which?"))
-    if data == 1:
+    if data == 1: # csv session
         import csv
         edges = []
         for top_item in X:
@@ -63,7 +64,7 @@ if save == 'y' or save == 'Y':
             writer.writerows(edges)
         print("✓ graph.csv 파일 생성 완료!")
         
-    elif data == 2:
+    elif data == 2: # dot session
         with open('graph.dot', 'w', encoding='utf-8') as f:
             f.write('digraph G {\n')
             f.write('  rankdir=LR;\n')
@@ -91,7 +92,7 @@ if save == 'y' or save == 'Y':
         print("\n[DOT 파일 사용법]")
         print("이미지 생성: dot -Tpng graph.dot -o output.png")
         print("또는:       dot -Tsvg graph.dot -o output.svg")
-    elif data == 3:
+    elif data == 3: # both of them
         import csv
         edges = []
         for top_item in X:
