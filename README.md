@@ -9,3 +9,5 @@ Focus on "How the WORDS of question was built". This is my approach that I used 
 5. Export from them to csv(Excel) or dot(Graphviz). (csv 또는 dot 파일로 처리합니다.)
 
 ###
+![Image](https://github.com/user-attachments/assets/8951a4f0-56c2-4541-83bb-ac469e31029b)
+<img src="이미지주소" width="50%" height="auto">
